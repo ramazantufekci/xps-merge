@@ -31,6 +31,6 @@ jobs:
     - name: Release Oluştur ve EXE'yi Yükle
       uses: softprops/action-gh-release@v2
       with:
-        files: dist/ana_dosya.exe # dist klasöründeki exe adını buraya yazın
+        files: dist/merge.exe # dist klasöründeki exe adını buraya yazın
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
