@@ -26,7 +26,7 @@ jobs:
 
     - name: EXE Oluştur
       run: |
-        pyinstaller --onefile --hidden-import=glob --collect-all aspose merge.py # ana_dosya.py kısmını kendi ana dosyanızla değiştirin
+        pyinstaller --onefile --hidden-import=platform --hidden-import=glob --collect-all aspose merge.py # ana_dosya.py kısmını kendi ana dosyanızla değiştirin
 
     - name: Release Oluştur ve EXE'yi Yükle
       uses: softprops/action-gh-release@v2
