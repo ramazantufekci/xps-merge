@@ -2,8 +2,7 @@ name: Build and Release EXE
 
 on:
   push:
-    tags:
-      - 'v*' # v1.0.0 gibi bir tag pushlandığında çalışır
+   
 
 jobs:
   build:
