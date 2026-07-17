@@ -4,7 +4,8 @@ on:
   push:
    tags:
       - 'v*' # v1.0.0 gibi bir tag pushlandığında çalışı
-
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: windows-latest # Windows üzerinde derleme yapar
