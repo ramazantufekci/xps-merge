@@ -1,1 +1,35 @@
-q
+name: Build and Release EXE
+
+on:
+  push:
+    tags:
+      - 'v*' # v1.0.0 gibi bir tag pushlandığında çalışır
+
+jobs:
+  build:
+    runs-on: windows-latest # Windows üzerinde derleme yapar
+
+    steps:
+    - name: Kodları Çek
+      uses: actions/checkout@v4
+
+    - name: Python Kur
+      uses: actions/setup-python@v5
+      with:
+        python-node-version: '3.11' # Kullandığınız Python sürümü
+
+    - name: Bağımlılıkları Yükle
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: EXE Oluştur
+      run: |
+        pyinstaller --onefile merge.py # ana_dosya.py kısmını kendi ana dosyanızla değiştirin
+
+    - name: Release Oluştur ve EXE'yi Yükle
+      uses: softprops/action-gh-release@v2
+      with:
+        files: dist/ana_dosya.exe # dist klasöründeki exe adını buraya yazın
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
